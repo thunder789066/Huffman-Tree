@@ -45,12 +45,28 @@ public class Tree_Table_Build {
 		}
 	}
 	
+	private static HashMap<String, Integer> sortMap() {
+		List<Map.Entry<String, Integer> > templist = new LinkedList<Map.Entry<String, Integer> >(freq_table.entrySet());
+		
+		Collections.sort(templist, new Comparator<Map.Entry<String, Integer> >() { 
+            public int compare(Map.Entry<String, Integer> i1, Map.Entry<String, Integer> i2) { 
+                return (i1.getValue()).compareTo(i2.getValue()); 
+            }
+        });
+		
+		HashMap<String, Integer> tempMap = new LinkedHashMap<String, Integer>(); 
+        for (Map.Entry<String, Integer> entry : templist) { 
+        	tempMap.put(entry.getKey(), entry.getValue()); 
+        } 
+		
+		return tempMap;
+	}
+	
 	public static void outputTable() {
+		Map<String, Integer> sortedFreqTable = sortMap();
 		System.out.println("  Symbol   |   Value"
 						  + "\r\n ---------------------");
-		/*System.out.println("   space   |     3"
-						  + "\r\n   f\t   |     4"); */
-		for (Entry<String, Integer> entry : freq_table.entrySet()) {
+		for (Entry<String, Integer> entry : sortedFreqTable.entrySet()) {
 			String symbol = entry.getKey();
 			int value = entry.getValue();
             if (symbol == "space")
