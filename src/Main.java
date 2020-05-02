@@ -11,7 +11,7 @@ public class Main {
 		return data;
 	}
 	
-	/* for testing
+	// for testing
 	public static int findinfile(String file) { // counting every instance if char is found
 		int count = 0;
 		
@@ -22,16 +22,17 @@ public class Main {
 		}
 		
 		return count;
-	} */
+	}// */
 
 	public static void main(String[] args) throws Exception {
 		String newline = System.getProperty("line.separator");
 		String data = readFile("C:\\Users\\Christina\\Documents\\All Programs\\Git Repos\\Huffman_Tree\\src\\test.txt");
+		data = data.replace(newline, " ");
 		Tree_Table_Build tree = new Tree_Table_Build(data);
 		
-		/*for testing
-		System.out.println(data);
-		System.out.println("a " + findinfile(data)); */
+		/*for testing*/
+		//System.out.println(data);
+		//System.out.println("a " + findinfile(data));
 		tree.outputTable();
 	}
 

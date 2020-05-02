@@ -62,7 +62,7 @@ public class Tree_Table_Build {
 		return tempMap;
 	}
 	
-	public static void outputTable() {
+	public void outputTable() {
 		Map<String, Integer> sortedFreqTable = sortMap();
 		System.out.println("  Symbol   |   Value"
 						  + "\r\n ---------------------");
