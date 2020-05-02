@@ -2,7 +2,6 @@
 import java.util.*;
 import java.lang.*;
 import java.nio.file.*;
-import java.util.Map.Entry;
 
 public class Main {
 	
@@ -12,7 +11,8 @@ public class Main {
 		return data;
 	}
 	
-	public static int findinfile(String file) {
+	/* for testing
+	public static int findinfile(String file) { // counting every instance if char is found
 		int count = 0;
 		
 		for (int i = 0; i < file.length(); i++) {
@@ -22,13 +22,17 @@ public class Main {
 		}
 		
 		return count;
-	}
+	} */
 
 	public static void main(String[] args) throws Exception {
+		String newline = System.getProperty("line.separator");
 		String data = readFile("C:\\Users\\Christina\\Documents\\All Programs\\Git Repos\\Huffman_Tree\\src\\test.txt");
-		System.out.println(data);
+		Tree_Table_Build tree = new Tree_Table_Build(data);
 		
-		System.out.println("a " + findinfile(data));
+		/*for testing
+		System.out.println(data);
+		System.out.println("a " + findinfile(data)); */
+		tree.outputTable();
 	}
 
 }
