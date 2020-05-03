@@ -1,6 +1,5 @@
 //package io;
 import java.util.*;
-import java.lang.*;
 import java.nio.file.*;
 
 public class Main {
@@ -10,30 +9,19 @@ public class Main {
 		data = new String(Files.readAllBytes(Paths.get(file)));
 		return data;
 	}
-	
-	// for testing
-	public static int findinfile(String file) { // counting every instance if char is found
-		int count = 0;
-		
-		for (int i = 0; i < file.length(); i++) {
-			if (file.charAt(i) == 'a') {
-				count++;
-			}
-		}
-		
-		return count;
-	}// */
 
 	public static void main(String[] args) throws Exception {
-		String newline = System.getProperty("line.separator");
 		String data = readFile("C:\\Users\\Christina\\Documents\\All Programs\\Git Repos\\Huffman_Tree\\src\\test.txt");
-		data = data.replace(newline, " ");
-		Tree_Table_Build tree = new Tree_Table_Build(data);
+		data = data.replace(System.getProperty("line.separator"), " ");
+		
+		Frequency_Table_Build freq = new Frequency_Table_Build(data);
+		HuffmanTree tree = new HuffmanTree(freq.getMap());
 		
 		/*for testing*/
 		//System.out.println(data);
-		//System.out.println("a " + findinfile(data));
-		tree.outputTable();
+		//freq.outputTable();
+		String out = tree.decode("c");
+		System.out.println(out);
 	}
 
 }

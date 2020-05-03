@@ -1,12 +1,11 @@
 import java.util.*;
-import java.lang.*;
 import java.util.Map.Entry;
 
-public class Tree_Table_Build {
-	private static String text = null;
+public class Frequency_Table_Build {
 	private static Map<String, Integer> freq_table = new HashMap<String, Integer>();
+	private static String text = null;
 	
-	public Tree_Table_Build(String data) {
+	public Frequency_Table_Build(String data) {
 		text = data;
 		freqTableBuild(text);
 	}
@@ -45,7 +44,7 @@ public class Tree_Table_Build {
 		}
 	}
 	
-	private static HashMap<String, Integer> sortMap() {
+	private static Map<String, Integer> sortMap() {
 		List<Map.Entry<String, Integer> > templist = new LinkedList<Map.Entry<String, Integer> >(freq_table.entrySet());
 		
 		Collections.sort(templist, new Comparator<Map.Entry<String, Integer> >() { 
@@ -60,6 +59,11 @@ public class Tree_Table_Build {
         } 
 		
 		return tempMap;
+	}
+	
+	public Map<String, Integer> getMap() {
+		Map<String, Integer> sortedFreqTable = sortMap();
+		return sortedFreqTable;
 	}
 	
 	public void outputTable() {
