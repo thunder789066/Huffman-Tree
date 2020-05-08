@@ -19,18 +19,11 @@ public class Frequency_Table_Build {
 		} return false;
 	}
 	
-	private static String spaceCheck(String letter) {
-		if (letter == " ")
-			return "space";
-		return letter;
-	}
-	
 	private static void freqTableBuild(String text) {
 		for (int i = 0; i < text.length(); i++) {
 			String str = String.valueOf(text.charAt(i));
 			boolean check = double_checker(str);
 			if (check == false) {		// if NOT FOUND, add to hashmap
-				str = spaceCheck(str);
 				freq_table.put(str, 1);
 			} else {					//if FOUND, update element (int) +1
 				Iterator<Map.Entry<String, Integer>> iterator = freq_table.entrySet().iterator();
@@ -68,14 +61,15 @@ public class Frequency_Table_Build {
 	
 	public void outputTable() {
 		Map<String, Integer> sortedFreqTable = sortMap();
-		System.out.println("  Symbol   |   Value"
+		System.out.println("  Symbol  |   Value"
 						  + "\r\n ---------------------");
 		for (Entry<String, Integer> entry : sortedFreqTable.entrySet()) {
 			String symbol = entry.getKey();
 			int value = entry.getValue();
-            if (symbol == "space")
-            	System.out.println("   " + symbol + "   |     " + value);
-            System.out.println("   " + symbol + "\t   |     " + value);
+			if (symbol == " ")
+            	System.out.println("   space" + "  |     " + value);
+            else
+            	System.out.println("   " + symbol + "\t  |     " + value);
 		}
 	}
 }

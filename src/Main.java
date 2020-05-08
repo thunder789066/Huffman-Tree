@@ -1,5 +1,3 @@
-//package io;
-import java.util.*;
 import java.nio.file.*;
 
 public class Main {
@@ -11,17 +9,17 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String data = readFile("C:\\Users\\Christina\\Documents\\All Programs\\Git Repos\\Huffman_Tree\\src\\test.txt");
-		data = data.replace(System.getProperty("line.separator"), " ");
+		//String test_data = readFile("C:\\Users\\Christina\\Documents\\All Programs\\Git Repos\\Huffman_Tree\\src\\test.txt");
+		String data = readFile("C:\\Users\\Christina\\Documents\\All Programs\\Git Repos\\Huffman_Tree\\src\\Sakiro.txt");
+		data = data.replace(System.getProperty("line.separator"), " ").toLowerCase();
 		
 		Frequency_Table_Build freq = new Frequency_Table_Build(data);
-		HuffmanTree tree = new HuffmanTree(freq.getMap());
 		
-		/*for testing*/
-		//System.out.println(data);
-		//freq.outputTable();
-		String out = tree.decode("c");
-		System.out.println(out);
+		System.out.println("   Frequency Table\n");
+		freq.outputTable();
+		
+		System.out.println("\n\n    Huffman Tree\n");
+		HuffmanTree.buildHuffmanTree(data);
 	}
 
 }
